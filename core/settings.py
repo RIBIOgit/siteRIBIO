@@ -11,6 +11,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # importante para Docker / localhost
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://siteribio.onrender.com",
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
