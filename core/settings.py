@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-)k6&8hyo$ya6lx1h1hh0$*n#)vql$-00i)ouffl9@wxwf9h9))'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "siteribio.onrender.com",
