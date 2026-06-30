@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- HERO -->
+<div class="p-5 mb-5 bg-white rounded shadow-sm">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-7">
+
+            <h1 class="display-4 fw-bold">
+                Portal RIBIO
+            </h1>
+
+            <p class="lead mt-3">
+                Rede Brasileira de Informação em Biossegurança.
+                Notícias, conteúdos técnicos, eventos e materiais
+                sobre biossegurança, saúde pública e vigilância.
+            </p>
+
+            <a href="/news/" class="btn btn-primary btn-lg mt-3">
+                Últimas Notícias
+            </a>
+
+        </div>
+
+        <div class="col-md-5 text-center">
+
+            <img
+                src="{% static 'img/RIBio_Logo.png' %}"
+                class="img-fluid rounded"
+                alt="Portal RIBIO"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- NOTÍCIAS -->
+
+<h2 class="mb-4">
+    Últimas Notícias
+</h2>
+
+<div class="row">
+
+{% for item in latest_news %}
+
+<div class="col-md-4 mb-4">
+
+<a href="{% url 'news_detail' item.id %}"
+class="text-decoration-none text-dark">
+
+<div class="card h-100">
+
+{% if item.image %}
+<img src="{{ item.image.url }}"
+class="card-img-top">
+{% endif %}
+
+<div class="card-body">
+
+<h5>{{ item.title }}</h5>
+
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+{% empty %}
+
+<p>
+Nenhuma notícia cadastrada.
+</p>
+
+{% endfor %}
+
+</div>
+
+<hr class="my-5">
+
+<!-- ÁREAS -->
+
+<h2 class="mb-4">
+Conheça o Portal
+</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body">
+
+<h3>
+📰 Notícias
+</h3>
+
+<p>
+Eventos, novidades e comunicados.
+</p>
+
+<a href="/news/" class="btn btn-outline-primary">
+Ver notícias
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body">
+
+<h3>
+📚 Conteúdo
+</h3>
+
+<p>
+Guias, documentos e materiais técnicos.
+</p>
+
+<a href="/content/" class="btn btn-outline-primary">
+Acessar conteúdo
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+<div class="card-body">
+
+<h3>
+📞 Contato
+</h3>
+
+<p>
+Fale com a equipe da RIBIO.
+</p>
+
+<a href="/contact/" class="btn btn-outline-primary">
+Entrar em contato
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="my-5"></div>
+
+
+
+{% endblock %}

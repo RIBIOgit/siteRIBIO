@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    {% if item.image %}
+        <img src="{{ item.image.url }}" class="card-img-top">
+    {% endif %}
+
+    <div class="card-body">
+
+        <h1>{{ item.title }}</h1>
+
+        <p>{{ item.content }}</p>
+
+        <small class="text-muted">
+            {{ item.created_at }}
+        </small>
+
+    </div>
+
+</div>
+
+{% endblock %}
