@@ -9,11 +9,14 @@ SECRET_KEY = 'django-insecure-)k6&8hyo$ya6lx1h1hh0$*n#)vql$-00i)ouffl9@wxwf9h9))
 
 DEBUG = True
 
-ALLOWED_HOSTS = [] # importante para Docker / localhost
+ALLOWED_HOSTS = [
+    "siteribio.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://siteribio.onrender.com",
-    "https://*.onrender.com",
 ]
 
 INSTALLED_APPS = [
