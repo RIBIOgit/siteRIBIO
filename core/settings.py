@@ -13,6 +13,7 @@ ALLOWED_HOSTS = ['*']  # importante para Docker / localhost
 
 CSRF_TRUSTED_ORIGINS = [
     "https://siteribio.onrender.com",
+    "https://*.onrender.com",
 ]
 
 INSTALLED_APPS = [
