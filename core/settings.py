@@ -4,6 +4,7 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 SECRET_KEY = 'django-insecure-)k6&8hyo$ya6lx1h1hh0$*n#)vql$-00i)ouffl9@wxwf9h9))'
 
 DEBUG = False
@@ -24,23 +25,22 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    
-    # ☁️ CLOUDINARY: Tem que vir ANTES do staticfiles
-    'cloudinary_storage', 
-    
     'django.contrib.staticfiles',
-    
-    # ☁️ CLOUDINARY: O app principal
-    'cloudinary',
-    
     "django_cleanup.apps.CleanupConfig",    
-
+    'cloudinary_storage',
+    'cloudinary',
     # seus apps
     'content',
     'news',
     'contact',
     'portal',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,13 +55,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
+
 # =========================
 # TEMPLATES (CORREÇÃO PRINCIPAL)
 # =========================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / "templates"],  # 👈 importante
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,11 +74,20 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
+
 # =========================
-# DATABASE
+# DATABASE (Docker PostgreSQL pronto se quiser usar depois)
 # =========================
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     "default": dj_database_url.config(
         default="sqlite:///db.sqlite3"
@@ -91,16 +101,20 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+
 # =========================
 # INTERNACIONALIZAÇÃO
 # =========================
 LANGUAGE_CODE = 'pt-br'
+
 TIME_ZONE = 'America/Sao_Paulo'
+
 USE_I18N = True
 USE_TZ = True
 
+
 # =========================
-# STATIC & MEDIA (ARQUIVOS)
+# STATIC
 # =========================
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -113,25 +127,15 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# =========================
-# ☁️ CONFIGURAÇÃO CLOUDINARY & WHITENOISE
-# =========================
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Lê as variáveis de ambiente que você configurou lá no Render
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-}
-
-# Configuração moderna do Django (substitui o antigo STATICFILES_STORAGE)
 STORAGES = {
-    # 'default' controla onde vão as mídias (uploads do usuário) -> Vai para o Cloudinary
     "default": {
+        # Isso diz ao Django para enviar uploads (mídia) para o Cloudinary
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
-    # 'staticfiles' controla CSS/JS do site e do admin -> Continua no Whitenoise
     "staticfiles": {
+        # Como vi que você usa whitenoise no requirements, mantenha ele aqui para os arquivos estáticos (CSS, JS)
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
