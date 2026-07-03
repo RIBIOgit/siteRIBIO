@@ -139,10 +139,7 @@ CLOUDINARY_STORAGE = {
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
+    }
 }
 
 print("CLOUD_NAME =", os.getenv("CLOUDINARY_CLOUD_NAME"))
