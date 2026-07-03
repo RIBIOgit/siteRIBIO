@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-)k6&8hyo$ya6lx1h1hh0$*n#)vql$-00i)ouffl9@wxwf9h9))'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "siteribio.onrender.com",
@@ -139,7 +139,10 @@ CLOUDINARY_STORAGE = {
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    }
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 print("CLOUD_NAME =", os.getenv("CLOUDINARY_CLOUD_NAME"))
