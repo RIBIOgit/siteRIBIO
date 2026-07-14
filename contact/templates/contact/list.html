@@ -30,7 +30,7 @@
         <div class="row g-3">
 
         {% for item in contact %}
-            <div class="col-md-4">
+            <div class="col-md-6">
 
                 <a href="{% url 'contact_detail' item.id %}" class="text-decoration-none text-dark">
 
@@ -39,7 +39,7 @@
                         {% if item.image %}
                             <img src="{{ item.image.url }}"
                                 class="card-img-top"
-                                style="height:300px; object-fit:contain;">
+                                style="height:500px; object-fit:contain;">
                         {% endif %}
 
                         <div class="card-body">
