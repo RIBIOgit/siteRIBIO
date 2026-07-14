@@ -2,12 +2,18 @@
 
 {% block content %}
 
+<!-- BOTÃO VOLTAR -->
+<a href="{% url 'contact_list' %}" class="btn btn-secondary mb-3">
+    ← Voltar
+</a>
+
+
 <div class="card mx-auto" style="max-width: 350px;">
 
     {% if item.image %}
         <img src="{{ item.image.url }}"
-            class="card-img-top"
-            object-fit:cover;">
+             class="card-img-top"
+             style="object-fit:contain;">
     {% endif %}
 
     <div class="card-body">
@@ -23,5 +29,29 @@
     </div>
 
 </div>
+
+
+<!-- SETAS DE NAVEGAÇÃO -->
+<div class="d-flex justify-content-between mt-4" style="max-width:350px; margin:auto;">
+
+    {% if previous_item %}
+        <a href="{% url 'contact_detail' previous_item.pk %}"
+           class="btn btn-outline-primary">
+            ← Anterior
+        </a>
+    {% else %}
+        <span></span>
+    {% endif %}
+
+
+    {% if next_item %}
+        <a href="{% url 'contact_detail' next_item.pk %}"
+           class="btn btn-outline-primary">
+            Próximo →
+        </a>
+    {% endif %}
+
+</div>
+
 
 {% endblock %}

@@ -36,6 +36,24 @@ def contact_detail(request, pk):
 
     item = get_object_or_404(ContactPage, pk=pk)
 
+    # Item anterior
+    previous_item = (
+        ContactPage.objects
+        .filter(pk__lt=item.pk)
+        .order_by("-pk")
+        .first()
+    )
+
+    # Próximo item
+    next_item = (
+        ContactPage.objects
+        .filter(pk__gt=item.pk)
+        .order_by("pk")
+        .first()
+    )
+
     return render(request, "contact/detail.html", {
-        "item": item
+        "item": item,
+        "previous_item": previous_item,
+        "next_item": next_item,
     })
