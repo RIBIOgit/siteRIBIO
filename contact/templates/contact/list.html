@@ -5,13 +5,13 @@
 <div class="row">
 
     <!-- 📰 COLUNA PRINCIPAL -->
-    <div class="col-md-6">
+    <div class="col-md-4">
 
         <!-- 🔥 DESTAQUE -->
         {% if featured %}
         <a href="{% url 'contact_detail' featured.id %}" class="text-decoration-none text-dark">
 
-            <div class="card mb-6">
+            <div class="card mb-4">
 
                 {% if featured.image %}
                     <img src="{{ featured.image.url }}" class="card-img-top">
@@ -30,7 +30,7 @@
         <div class="row g-3">
 
         {% for item in contact %}
-            <div class="col-md-6">
+            <div class="col-md-4">
 
                 <a href="{% url 'contact_detail' item.id %}" class="text-decoration-none text-dark">
 
