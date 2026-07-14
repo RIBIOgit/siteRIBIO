@@ -11,7 +11,7 @@
         {% if featured %}
         <a href="{% url 'contact_detail' featured.id %}" class="text-decoration-none text-dark">
 
-            <div class="card mb-4">
+            <div class="card mb-6">
 
                 {% if featured.image %}
                     <img src="{{ featured.image.url }}" class="card-img-top">
