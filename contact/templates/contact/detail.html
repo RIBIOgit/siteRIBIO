@@ -2,10 +2,12 @@
 
 {% block content %}
 
-<div class="card">
-
+<div class="card mx-auto" style="max-width: 500px;">
+    
     {% if item.image %}
-        <img src="{{ item.image.url }}" class="card-img-top">
+        <img src="{{ item.image.url }}"
+            class="card-img-top"
+            style="height:400px; object-fit:cover;">
     {% endif %}
 
     <div class="card-body">
