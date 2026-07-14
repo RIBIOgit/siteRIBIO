@@ -8,50 +8,55 @@
 </a>
 
 
-<div class="card mx-auto" style="max-width: 350px;">
+<div class="d-flex align-items-center justify-content-center gap-3">
 
-    {% if item.image %}
-        <img src="{{ item.image.url }}"
-             class="card-img-top"
-             style="object-fit:contain;">
-    {% endif %}
+    <!-- SETA ANTERIOR -->
+    <div style="width:40px;">
+        {% if previous_item %}
+            <a href="{% url 'contact_detail' previous_item.pk %}"
+               class="fs-1 text-decoration-none">
+                ‹
+            </a>
+        {% endif %}
+    </div>
 
-    <div class="card-body">
 
-        <h1>{{ item.title }}</h1>
+    <!-- CARD -->
+    <div class="card" style="width:350px;">
 
-        <p>{{ item.contact }}</p>
+        {% if item.image %}
+            <img src="{{ item.image.url }}"
+                 class="card-img-top"
+                 style="height:250px; object-fit:contain;">
+        {% endif %}
 
-        <small class="text-muted">
-            {{ item.created_at }}
-        </small>
+
+        <div class="card-body">
+
+            <h1>{{ item.title }}</h1>
+
+            <p>{{ item.contact }}</p>
+
+            <small class="text-muted">
+                {{ item.created_at }}
+            </small>
+
+        </div>
 
     </div>
 
-</div>
 
+    <!-- SETA PRÓXIMO -->
+    <div style="width:40px;">
+        {% if next_item %}
+            <a href="{% url 'contact_detail' next_item.pk %}"
+               class="fs-1 text-decoration-none">
+                ›
+            </a>
+        {% endif %}
+    </div>
 
-<!-- SETAS DE NAVEGAÇÃO -->
-<div class="d-flex justify-content-between mt-4" style="max-width:350px; margin:auto;">
-
-    {% if previous_item %}
-        <a href="{% url 'contact_detail' previous_item.pk %}"
-           class="btn btn-outline-primary">
-            ← Anterior
-        </a>
-    {% else %}
-        <span></span>
-    {% endif %}
-
-
-    {% if next_item %}
-        <a href="{% url 'contact_detail' next_item.pk %}"
-           class="btn btn-outline-primary">
-            Próximo →
-        </a>
-    {% endif %}
 
 </div>
-
 
 {% endblock %}
