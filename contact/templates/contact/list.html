@@ -37,7 +37,9 @@
                     <div class="card h-100">
 
                         {% if item.image %}
-                            <img src="{{ item.image.url }}" class="card-img-top">
+                            <img src="{{ item.image.url }}"
+                                class="card-img-top"
+                                style="height:180px; object-fit:contain;">
                         {% endif %}
 
                         <div class="card-body">
