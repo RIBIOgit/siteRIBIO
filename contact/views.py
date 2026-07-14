@@ -17,7 +17,7 @@ def contact_list(request):
     if q:
         contact = contact.filter(title__icontains=q)
 
-    paginator = Paginator(contact, 6)
+    paginator = Paginator(contact, 12)
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
