@@ -7,21 +7,40 @@
     <!-- 📰 COLUNA PRINCIPAL -->
     <div class="col-md-8">
 
-    <!-- 🔵 BOX INSTITUCIONAL RIBIO -->
-    <div class="card mb-4 p-4 text-center">
-
-        <img src="/static/img/RIBio_Logo.png"
-             class="mx-auto mb-3"
-             style="max-width:180px;">
-
-        <p class="mb-0">
-            A RIBIO atua promovendo conhecimento, inovação e soluções
-            através de pesquisa, educação e serviços especializados.
-            Aqui você encontra nossos conteúdos, notícias e informações
-            sobre nossa equipe e nossas atividades.
-        </p>
-
-    </div>
+        <!-- 🔵 BOX INSTITUCIONAL RIBIO -->
+        <div class="card mb-4 p-4 shadow-sm">
+        
+            <div class="row align-items-center">
+            
+                <!-- LOGO -->
+                <div class="col-md-3 text-center">
+                    {% load static %}
+                    <img src="{% static 'images/logoRIBIO.png' %}"
+                         class="img-fluid"
+                         style="max-width:150px;">
+                </div>
+            
+            
+                <!-- TEXTO -->
+                <div class="col-md-9">
+                
+                    <p class="mb-2">
+                        A RIBIO atua na promoção da ciência, tecnologia e inovação.
+                    </p>
+                
+                    <p class="mb-2">
+                        Desenvolvemos atividades de pesquisa, ensino e extensão.
+                    </p>
+                
+                    <p class="mb-0">
+                        Nosso objetivo é aproximar conhecimento científico e sociedade.
+                    </p>
+                
+                </div>
+            
+            </div>
+        
+        </div>
 
         <!-- 🔥 DESTAQUE -->
         {% if featured %}
