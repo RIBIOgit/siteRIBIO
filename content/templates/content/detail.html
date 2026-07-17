@@ -12,19 +12,12 @@
 
         <h1>{{ item.title }}</h1>
 
-        <div class="card-body">
-
-            <h1>{{ item.title }}</h1>
-                
-            <div class="mt-3">
-                {{ item.content|urlize|linebreaks }}
-            </div>
-        
-            <small class="text-muted">
-                {{ item.created_at }}
-            </small>
-        
+        <div class="mt-3">
+            {{ item.content|urlize|linebreaks }}
         </div>
+                <small class="text-muted">
+            {{ item.created_at }}
+        </small>
 
         <small class="text-muted">
             {{ item.created_at }}
